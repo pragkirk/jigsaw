@@ -7,3 +7,7 @@ fi
 if [ -d "mlib" ]; then
 	rm -r mlib
 fi
+
+if [ -d "stats" ]; then
+	rm -r stats
+fi
