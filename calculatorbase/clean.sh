@@ -18,4 +18,8 @@ if [ -d "customimage" ]; then
   rm -r customimage
 fi
 
+if [ -d "stats" ]; then
+  rm -r stats
+fi
+
 echo ----------- Done Cleaning Up -----------

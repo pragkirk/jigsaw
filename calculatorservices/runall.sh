@@ -6,6 +6,8 @@
 ./createimage.sh
 ./dependencies.sh
 
+ant
+
 cd ./customimage/bin
 
 ./calc

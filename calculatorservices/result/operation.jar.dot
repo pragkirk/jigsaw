@@ -1,5 +1,0 @@
-digraph "operation.jar" {
-    // Path: ./mlib/operation.jar
-   "com.extensiblejava.calculator.operation"          -> "java.lang";
-   "com.extensiblejava.calculator.operation"          -> "java.util";
-}

@@ -122,7 +122,7 @@
 	
 	</target> -->
 	
-	<!-- <target name="analyzer" depends="build">
+	<target name="analyzer" depends="loanbundle">
 
         <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
             <classpath>
@@ -148,6 +148,6 @@
 
 		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./stats/dependencies.grph -o ./stats/dependencies.png"/></exec>		
 
-	</target> -->
+	</target>
 	
 </project>

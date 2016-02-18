@@ -1,8 +1,0 @@
-#Thu Feb 18 07:44:24 CST 2016
-JAVA_FULL_VERSION="9-ea+96-jigsaw-nightly-h4139-20151222"
-OS_VERSION="11.2"
-JAVA_VERSION="9"
-OS_NAME="Darwin"
-SOURCE=".\:89666c1768e8 bdb\:8ff6e91a0455 closed\:964ce63aab4c corba\:99620e004719 deploy\:b46d0627a7dd hotspot\:f60f6d307283 hotspot/make/closed\:4e54fdfc834a hotspot/src/closed\:9f5970d1c4e1 hotspot/test/closed\:296c010776bb install\:6e11d9cfbdef jaxp\:23a6fe4172e8 jaxws\:ab43de1d28fd jdk\:8ca2c23fb8b4 jdk/make/closed\:b413dc3165fc jdk/src/closed\:b5cf5c326bc2 jdk/test/closed\:15ce5dc32d52 langtools\:8a2b2c2caa15 nashorn\:890589990d39 pubs\:c40361e0f714 sponsors\:a1d16b1c9bd4"
-OS_ARCH="x86_64"
-MODULES=loan,math,calc,operation,java.base
