@@ -1,0 +1,6 @@
+digraph "summary" {
+  "client.jar"                                       -> "java.base";
+  "client.jar"                                       -> "not found";
+  "client.jar"                                       -> "service.jar";
+  "service.jar"                                      -> "java.base";
+}

@@ -1,0 +1,153 @@
+<project name="analyzer" default="loanbundle" basedir=".">
+
+	<property name="src" location="${basedir}/src"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="lib" location="${basedir}/lib"/>
+	<property name="bin" location="${basedir}/bin"/>
+	<property name="stats" location="${basedir}/stats"/>
+	<property name="jaranalyzer" location="${basedir}/jaranalyzer"/>
+	<property name="load" location="${basedir}/felix-5.4.0/load"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${src}"/>
+		<pathelement path="${lib}/biz.aQute.bnd-3.2.0.jar"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${stats}"/>
+		<delete dir="${bin}"/>
+		<delete dir="${build}"/>
+		<delete dir="felix-5.4.0/felix-cache"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${stats}"/>
+		<mkdir dir="${bin}"/>
+	</target>
+	
+	<target name="opcompile" depends="init">
+		<javac srcdir="${src}/operation" destdir="${build}">
+			<classpath>
+				<pathelement path="${src}"/>
+				<pathelement path="${lib}/biz.aQute.bnd-3.2.0.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="opbundle" depends="opcompile"> 
+   	<taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${lib}/biz.aQute.bnd-3.2.0.jar"/> 
+		<bnd  classpath="${build}" eclipse="false" failok="false" output="${bin}/operation.jar" exceptions="true" files="operation.bnd"/> 
+	</target>
+	
+	<target name="calccompile" depends="opbundle">
+		<delete dir="${build}"/>
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src}/calc" destdir="${build}">
+			<classpath>
+				<pathelement path="${src}"/>
+				<pathelement path="${bin}/operation.jar"/>
+				<pathelement path="${lib}/biz.aQute.bnd-3.2.0.jar"/>
+				<pathelement path="${lib}/org.apache.felix.gogo.runtime-0.16.2.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="calcbundle" depends="calccompile"> 
+   	<taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${lib}/biz.aQute.bnd-3.2.0.jar"/> 
+		<bnd  classpath="${build}" eclipse="false" failok="false" output="${bin}/calc.jar" exceptions="true" files="calculator.bnd"/> 
+	</target>
+	
+	<target name="mathcompile" depends="calcbundle">
+		<delete dir="${build}"/>
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src}/math" destdir="${build}">
+			<classpath>
+				<pathelement path="${src}"/>
+				<pathelement path="${bin}/operation.jar"/>
+				<pathelement path="${lib}/biz.aQute.bnd-3.2.0.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="mathbundle" depends="mathcompile"> 
+   	<taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${lib}/biz.aQute.bnd-3.2.0.jar"/> 
+		<bnd  classpath="${build}" eclipse="false" failok="false" output="${bin}/math.jar" exceptions="true" files="math.bnd"/> 
+	</target>
+	
+	<target name="loancompile" depends="mathbundle">
+		<delete dir="${build}"/>
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src}/loan" destdir="${build}">
+			<classpath>
+				<pathelement path="${src}"/>
+				<pathelement path="${bin}/operation.jar"/>
+				<pathelement path="${lib}/biz.aQute.bnd-3.2.0.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="loanbundle" depends="loancompile"> 
+   	<taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${lib}/biz.aQute.bnd-3.2.0.jar"/> 
+		<bnd  classpath="${build}" eclipse="false" failok="false" output="${bin}/loan.jar" exceptions="true" files="loan.bnd"/> 
+	</target>
+	
+	<target name="load">
+		<mkdir dir="${load}"/>
+		<echo message="Load directory created."/>
+	</target>
+	
+	<target name="deploy">
+		<copy file="${bin}/operation.jar" todir="${load}"/>
+		<copy file="${bin}/calc.jar" todir="${load}"/>
+		<copy file="${bin}/math.jar" todir="${load}"/>
+		<copy file="${bin}/loan.jar" todir="${load}"/>
+	</target>
+	
+	<!-- <target name="bundle" depends="compile">
+		<jar jarfile="${bin}/calculator.jar" basedir="${build}" 
+			excludes="com/extensiblejava/calculator/math/** 
+			com/extensiblejava/calculator/operation/** 
+			com/extensiblejava/calculator/textui/**"/>
+		
+		<jar jarfile="${bin}/math.jar" basedir="${build}" 
+			includes="com/extensiblejava/calculator/math/**"/>
+		
+		<jar jarfile="${bin}/operation.jar" basedir="${build}" 
+			includes=" com/extensiblejava/calculator/operation/**"/>
+		
+		<jar jarfile="${bin}/textui.jar" basedir="${build}" 
+			includes="com/extensiblejava/calculator/textui/**"/>
+	
+	</target> -->
+	
+	<!-- <target name="analyzer" depends="build">
+
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${jaranalyzer}/jaranalyzer-1.2.jar"/>
+                <pathelement path="${jaranalyzer}/lib/bcel-5.2.jar"/>
+                <pathelement path="${jaranalyzer}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${jaranalyzer}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${bin}" destfile="${stats}/dependencies.xml" 
+				summaryclass="com.kirkk.analyzer.textui.XMLUISummary" />
+				
+		<style in="${stats}/dependencies.xml" 
+		       out="${stats}/dependencies.html"
+			style="${jaranalyzer}/jaranalyzer.xsl">	
+		</style>
+
+		<style in="${stats}/dependencies.xml" 
+		    out="${stats}/dependencies.grph"
+			style="${jaranalyzer}/jaranalyzer2dot.xsl">	
+		</style>
+
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./stats/dependencies.grph -o ./stats/dependencies.png"/></exec>		
+
+	</target> -->
+	
+</project>

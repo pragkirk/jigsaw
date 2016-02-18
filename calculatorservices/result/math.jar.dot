@@ -1,0 +1,9 @@
+digraph "math.jar" {
+    // Path: ./mlib/math.jar
+   "com.extensiblejava.calculator.math"               -> "com.extensiblejava.calculator.operation (operation.jar)";
+   "com.extensiblejava.calculator.math"               -> "java.io";
+   "com.extensiblejava.calculator.math"               -> "java.lang";
+   "com.extensiblejava.calculator.math"               -> "java.util";
+   "math"                                             -> "com.extensiblejava.calculator.math (math.jar)";
+   "math"                                             -> "com.extensiblejava.calculator.operation (operation.jar)";
+}

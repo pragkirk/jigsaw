@@ -1,0 +1,14 @@
+digraph "calc.jar" {
+    // Path: ./mlib/calc.jar
+   "calc"                                             -> "<unnamed> (not found)";
+   "calc"                                             -> "com.extensiblejava.calculator.operation (operation.jar)";
+   "com.extensiblejava.calculator"                    -> "com.extensiblejava.calculator.operation (operation.jar)";
+   "com.extensiblejava.calculator"                    -> "java.io";
+   "com.extensiblejava.calculator"                    -> "java.lang";
+   "com.extensiblejava.calculator"                    -> "java.util";
+   "com.extensiblejava.calculator.textui"             -> "com.extensiblejava.calculator (calc.jar)";
+   "com.extensiblejava.calculator.textui"             -> "com.extensiblejava.calculator.operation (operation.jar)";
+   "com.extensiblejava.calculator.textui"             -> "java.io";
+   "com.extensiblejava.calculator.textui"             -> "java.lang";
+   "com.extensiblejava.calculator.textui"             -> "java.util";
+}

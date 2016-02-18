@@ -1,0 +1,4 @@
+Service-Component: *
+Private-Package: com.extensiblejava.calculator.math
+Bundle-Version: 1.0.0
+-noee:true

@@ -1,0 +1,10 @@
+digraph "summary" {
+  "calc.jar"                                         -> "java.base";
+  "calc.jar"                                         -> "not found";
+  "calc.jar"                                         -> "operation.jar";
+  "loan.jar"                                         -> "java.base";
+  "loan.jar"                                         -> "operation.jar";
+  "math.jar"                                         -> "java.base";
+  "math.jar"                                         -> "operation.jar";
+  "operation.jar"                                    -> "java.base";
+}

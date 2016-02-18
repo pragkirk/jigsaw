@@ -1,0 +1,4 @@
+Export-Package: com.extensiblejava.calculator
+Bundle-Version: 1.0.0
+Service-Component: *
+-noee:true

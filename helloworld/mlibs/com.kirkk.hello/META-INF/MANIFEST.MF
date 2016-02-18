@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: 9-ea (Oracle Corporation)
+Main-Class: com.kirkk.hello.HelloWorld
+
