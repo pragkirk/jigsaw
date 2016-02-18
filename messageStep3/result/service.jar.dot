@@ -1,4 +1,0 @@
-digraph "service.jar" {
-    // Path: ./mlib/service.jar
-   "com.kirkk.service"                                -> "java.lang";
-}

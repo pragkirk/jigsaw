@@ -1,7 +1,0 @@
-digraph "client.jar" {
-    // Path: ./mlib/client.jar
-   "com.kirkk.client"                                 -> "com.kirkk.service (service.jar)";
-   "com.kirkk.client"                                 -> "java.io";
-   "com.kirkk.client"                                 -> "java.lang";
-   "module1"                                          -> "<unnamed> (not found)";
-}
