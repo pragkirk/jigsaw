@@ -39,19 +39,15 @@ public class CalculatorTextUI {
 		Iterable<Values> values = ServiceLoader.load(Values.class);
 		for(Values vals: values) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			//System.out.println(vals.getDescriptor());
 			map.put("name", vals.getDescriptor());
 			calculator.setValues(vals,map);
-  			//renderDashboardIcon(app);
 		}
 		
 		Iterable<Operation> operations = ServiceLoader.load(Operation.class);
 		for(Operation op: operations) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			//System.out.println(op.getDescriptor());
 			map.put("name", op.getDescriptor());
 			calculator.setOperation(op,map);
-  			//renderDashboardIcon(app);
 		}
 		
 		return calculator;
