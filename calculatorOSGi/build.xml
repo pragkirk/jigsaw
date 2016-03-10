@@ -1,4 +1,4 @@
-<project name="analyzer" default="loanbundle" basedir=".">
+<project name="analyzer" default="analyzer" basedir=".">
 
 	<property name="src" location="${basedir}/src"/>
 	<property name="build" location="${basedir}/build"/>
@@ -19,6 +19,7 @@
 		<delete dir="${bin}"/>
 		<delete dir="${build}"/>
 		<delete dir="felix-5.4.0/felix-cache"/>
+		<delete dir="${load}"/>
 	</target>
 	
 	<target name="init" depends="clean">

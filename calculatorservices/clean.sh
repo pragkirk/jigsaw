@@ -18,6 +18,14 @@ if [ -d "customimage" ]; then
   rm -r customimage
 fi
 
+if [ -d "loanimage" ]; then
+  rm -r loanimage
+fi
+
+if [ -d "mathimage" ]; then
+  rm -r mathimage
+fi
+
 if [ -d "stats" ]; then
   rm -r stats
 fi
