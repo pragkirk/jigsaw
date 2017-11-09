@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -mp mlib -m com.kirkk.hello
+java -p mlib -m com.kirkk.hello
