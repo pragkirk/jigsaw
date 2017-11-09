@@ -1,0 +1,32 @@
+<project name="Comp" default="compile" basedir=".">
+
+	<property name="src" location="${basedir}/src"/>
+	<property name="srctest" location="${basedir}/srctest"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="lib" location="${basedir}/mlib"/>
+	<property name="buildstats" location="${basedir}/stats"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${src}/client"/>
+		<pathelement path="${lib}/service.jar"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete file="junitresults.txt"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${src}/client" destdir="${build}">
+			<classpath refid="project.class.path"/>
+		</javac>
+		
+		<jar jarfile="${lib}/client.jar" basedir="${build}"/>
+	</target>
+	
+</project>

@@ -1,0 +1,1 @@
+jar umf manifest.mf ./mlib/service.jar

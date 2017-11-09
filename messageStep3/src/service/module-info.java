@@ -1,3 +1,3 @@
-module module2 { 
+module service { 
 	exports com.kirkk.service;
 }
