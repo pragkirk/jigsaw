@@ -1,6 +1,6 @@
 package com.extensiblejava.calculator.loan;
 
-import com.extensiblejava.calculator.*;
+//import com.extensiblejava.calculator.*;
 import com.extensiblejava.calculator.operation.Values;
 
 import java.io.*;

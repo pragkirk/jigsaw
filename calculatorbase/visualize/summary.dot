@@ -1,0 +1,9 @@
+digraph "summary" {
+  "calc"                                             -> "java.base (java.base)";
+  "calc"                                             -> "operation";
+  "loan"                                             -> "java.base (java.base)";
+  "loan"                                             -> "operation";
+  "operation"                                        -> "java.base (java.base)";
+  "math"                                             -> "java.base (java.base)";
+  "math"                                             -> "operation";
+}

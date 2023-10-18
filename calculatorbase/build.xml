@@ -1,8 +1,8 @@
-<project name="analyzer" default="analyzer" basedir=".">
+<project name="analyzer" default="visualize" basedir=".">
 
 	<property name="bin" location="${basedir}/mlib"/>
-	<property name="stats" location="${basedir}/stats"/>
-	<property name="jaranalyzer" location="${basedir}/jaranalyzer"/>
+	<property name="stats" location="${basedir}/visualize"/>
+	<!-- ><property name="jaranalyzer" location="${basedir}/jaranalyzer"/> -->
 	<property name="version" value="1.0"/>
 
 	<target name="clean">
@@ -13,7 +13,7 @@
 		<mkdir dir="${stats}"/>
 	</target>
 	
-	<target name="analyzer" depends="init">
+	<!-- ><target name="analyzer" depends="init">
 
         <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
             <classpath>
@@ -39,6 +39,26 @@
 
 		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./stats/dependencies.grph -o ./stats/dependencies.png"/></exec>		
 
-	</target>
+	</target> -->
+	
+	<target name="visualize" depends="init">
+		
+		
+		<!-- ><exec executable="jdeps" ><arg line="-dotoutput=./buildstats -s ./buildstats/*.jar"/></exec> -->
+		
+		<exec executable="sh" >
+			<arg value="-c"/>
+			<arg value="jdeps -dotoutput=./visualize -s ./mlib/*.jar"/>
+		</exec>
+		
+		<!-- ><exec executable="jdeps" >
+			<arg value="-dotoutput=./buildstats"/>
+			<arg value="-s"/>
+			<arg value="./buildstats/*.jar"/>
+		</exec>  -->
+		
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./visualize/summary.dot -o ./visualize/appdependencies.png"/></exec> 
+		
+	</target>	
 	
 </project>
